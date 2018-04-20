@@ -1,0 +1,37 @@
+<section class="myapp" style="margin: 10%">
+  <header class="header">
+    <h1>Students</h1>
+    <input class="new-student" placeholder="Student's Name" autofocus="" [(ngModel)]="newStudent.name">
+    <input class="new-student" placeholder="Student's Lastname" autofocus="" [(ngModel)]="newStudent.lastname">
+    <button (click)="add()">
+        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+    </button>
+  </header>
+  <section class="main" *ngIf="students.length > 0">
+      <table class="table table-hover" style="margin-top: 2%">
+        <thead>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students" >
+                <td>{{student.id }} </td>
+                <td>{{student.name }} </td>
+                <td>{{student.lastname }} </td>
+                <td>
+                    <button type="button" class="btn btn-default" aria-label="Left Align" (click)="edit(student)">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                      </button> 
+                    <button type="button" class="btn btn-default" aria-label="Left Align" (click)="remove(student)">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                      </button> 
+                </td>
+              </tr>
+        </tbody>
+      </table>
+  </section>
+  <footer class="footer" *ngIf="students.length > 0">
+    <span class="todo-count"><strong>{{students.length}}</strong> {{students.length == 1 ? 'item' : 'items'}} left</span>
+  </footer>
+</section>
